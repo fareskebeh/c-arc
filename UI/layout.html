@@ -86,9 +86,9 @@
         <header>
             <img src="../assets/carc.png" alt="App Logo" />
             <div class="window-controls">
-                <button id="minimize"></button>
-                <button id="maximize"></button>
-                <button id="close"></button>
+                <button onclick="pywebview.api.minimize()" id="minimize"></button>
+                <button onclick="pywebview.api.maximize()" id="maximize"></button>
+                <button onclick="pywebview.api.close()" id="close"></button>
             </div>
         </header>
 
@@ -98,31 +98,16 @@
         </main>
 
         <script>
-            const maximizeButton = document.getElementById("maximize")
-            const minimizeButton = document.getElementById("minimize")
-            const closeButton = document.getElementById("close")
-            const maximized = false
-            window.addEventListener('pywebviewready', ()=> {
-                maximizeButton.onclick = async ()=> {
-                    if(maximized) {
-                        await window.pywebview.api.restore()
-                        maximized=false
+                window.addEventListener("keydown", (e)=> {
+                    
+                    if(e.metaKey && e.key==="ArrowUp") {
+                        window.pywebview.api.maximize()
                     }
-                    else {
-                        await window.pywebview.api.maximize()
-                        maximized=true
+
+                    else if (e.ctrlKey && e.key==="ArrowDown") {
+                        window.pywebview.api.minimize()
                     }
-                }
-                closeButton.onclick = async ()=> {
-                    await window.pywebview.api.close()
-                }
-                minimizeButton.onclick = async ()=> {
-                    await window.pywebview.api.minimize()
-                }
-                
-                
-            })
-            
+                })
         </script>
     </body>
 </html>
