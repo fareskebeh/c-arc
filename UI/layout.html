@@ -83,14 +83,6 @@
 </head>
 
     <body>
-        <header>
-            <img src="../assets/carc.png" alt="App Logo" />
-            <div class="window-controls">
-                <button onclick="pywebview.api.minimize()" id="minimize"></button>
-                <button onclick="pywebview.api.maximize()" id="maximize"></button>
-                <button onclick="pywebview.api.close()" id="close"></button>
-            </div>
-        </header>
 
         <main>
             <aside id="explorer">EXPLORER</aside>
@@ -98,16 +90,7 @@
         </main>
 
         <script>
-                window.addEventListener("keydown", (e)=> {
-                    
-                    if(e.metaKey && e.key==="ArrowUp") {
-                        window.pywebview.api.maximize()
-                    }
-
-                    else if (e.ctrlKey && e.key==="ArrowDown") {
-                        window.pywebview.api.minimize()
-                    }
-                })
+                
         </script>
     </body>
 </html>
